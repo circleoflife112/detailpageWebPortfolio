@@ -563,6 +563,45 @@
         object-fit: contain;
       }
 
+      /* ===== 이미지 모달 ===== */
+      #img-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.82);
+        align-items: center;
+        justify-content: center;
+        cursor: zoom-out;
+      }
+      #img-modal.open {
+        display: flex;
+      }
+      #img-modal img {
+        max-width: 90vw;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 4px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+        cursor: default;
+      }
+      #img-modal .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        font-size: 28px;
+        color: #fff;
+        cursor: pointer;
+        line-height: 1;
+        opacity: 0.8;
+      }
+      #img-modal .modal-close:hover {
+        opacity: 1;
+      }
+      .work-card.clickable {
+        cursor: pointer;
+      }
+
       /* ===== P4: 캠페인 비교 ===== */
       .compare-page {
         padding: 36px 52px;
@@ -729,10 +768,7 @@
           <span class="nav-num">03</span>델마스튜디오
         </button>
         <button class="nav-tab" data-page="3">
-          <span class="nav-num">04</span>캠페인
-        </button>
-        <button class="nav-tab" data-page="4">
-          <span class="nav-num">05</span>툴 & 정보
+          <span class="nav-num">04</span>툴 & 정보
         </button>
       </div>
     </nav>
@@ -742,7 +778,6 @@
       <div class="pi-dot" data-page="1"></div>
       <div class="pi-dot" data-page="2"></div>
       <div class="pi-dot" data-page="3"></div>
-      <div class="pi-dot" data-page="4"></div>
     </div>
 
     <div class="pages">
@@ -753,7 +788,7 @@
             <div class="cover-eyebrow au">Web Designer Portfolio</div>
             <div>
               <div class="cover-role au d1">E-Commerce · Floral · Fashion</div>
-              <div class="cover-name au d2">YOUR<br />NAME</div>
+              <div class="cover-name au d2">HAN<br />YURI</div>
               <div class="cover-tagline au d3">
                 상세페이지, 배너, 캠페인 비주얼을<br />기획부터 완성까지
                 담당합니다.
@@ -779,7 +814,7 @@
                 <img src="images/doosi-main.jpg" alt="두시" />
                 <div class="brand-overlay">
                   <div class="brand-name">두시</div>
-                  <div class="brand-sub">Floral Brand · 2023–2024</div>
+                  <div class="brand-sub">Floral Brand · 2021–2022</div>
                 </div>
               </div>
               <div class="brand-panel">
@@ -793,7 +828,7 @@
             <div class="cover-info au d2">
               <div class="ci">
                 <div class="ci-k">경력</div>
-                <div class="ci-v">3년 이커머스</div>
+                <div class="ci-v">약 5년 이커머스</div>
               </div>
               <div class="ci">
                 <div class="ci-k">브랜드</div>
@@ -805,15 +840,16 @@
               </div>
               <div class="ci">
                 <div class="ci-k">툴</div>
-                <div class="ci-v">Photoshop · Illustrator</div>
+                <div class="ci-v">
+                  Photoshop · Illustrator · figma · html · css · javaScript
+                </div>
               </div>
             </div>
             <div class="cover-contact au d3">
               <div>
-                <div class="contact-main">YOUR@EMAIL.COM</div>
-                <div class="contact-sub">010-0000-0000</div>
+                <div class="contact-main">hurshoby@naver.com</div>
+                <!-- <div class="contact-sub">010-4478-****</div> -->
               </div>
-              <div class="contact-sub">behance.net/yourname</div>
             </div>
           </div>
         </div>
@@ -828,7 +864,10 @@
             <div class="bh-sub">2021 – 2022</div>
           </div>
           <div class="work-grid">
-            <div class="work-card au d1">
+            <div
+              class="work-card au d1 clickable"
+              data-modal-img="images/doosi-detailpage.jpg"
+            >
               <div class="work-img">
                 <img
                   src="images/doosiproduct1.jpg"
@@ -849,13 +888,16 @@
                 </div>
               </div>
             </div>
-            <div class="work-card au d2">
+            <div
+              class="work-card au d2 clickable"
+              data-modal-img="images/doosi-plant.jpg"
+            >
               <div class="work-img">
                 <img src="images/aspargus.jpg" alt="아스파라거스 상세페이지" />
               </div>
               <div class="work-info">
                 <div class="work-cat">상세페이지</div>
-                <div class="work-name">아스파라거스</div>
+                <div class="work-name">플랜트</div>
                 <div class="work-desc">
                   식물 단품 상세. 특성·사이즈·Gardener's tip 정보 구조화. 내추럴
                   톤 유지.
@@ -867,7 +909,10 @@
                 </div>
               </div>
             </div>
-            <div class="work-card au d3">
+            <div
+              class="work-card au d3 clickable"
+              data-modal-img="images/doosi-theme.jpg"
+            >
               <div class="work-img">
                 <img src="images/doosi-performance.jpg" alt="테마 메인 배너" />
               </div>
@@ -885,39 +930,23 @@
                 </div>
               </div>
             </div>
-            <div class="work-card au d4" style="grid-column: 1/3">
-              <div
-                style="display: grid; grid-template-columns: 1fr 1fr; gap: 0"
-              >
-                <div style="padding: 18px 20px">
-                  <div class="work-cat">SNS 이벤트 배너</div>
-                  <div class="work-name">우정, 사랑</div>
-                  <div class="work-desc">
-                    국제 우정의 날(7.30) 기획전. 해바라기 꽃다발 + 푸어화병 세트
-                    프로모션. 정방형 SNS 배너.
-                  </div>
-                  <div class="work-tags">
-                    <span class="wtag">1:1</span><span class="wtag">SNS</span
-                    ><span class="wtag">이벤트</span>
-                  </div>
+            <div class="work-card au d4">
+              <div class="work-img">
+                <img
+                  src="images/doosi-sns-banner.jpg"
+                  alt="우정사랑 SNS 배너"
+                />
+              </div>
+              <div class="work-info">
+                <div class="work-cat">SNS 이벤트 배너</div>
+                <div class="work-name">우정, 사랑</div>
+                <div class="work-desc">
+                  국제 우정의 날(7.30) 기획전. 해바라기 꽃다발 + 푸어화병 세트
+                  프로모션. 정방형 SNS 배너.
                 </div>
-                <div
-                  style="
-                    border-left: 1px solid var(--border);
-                    overflow: hidden;
-                    max-height: 180px;
-                  "
-                >
-                  <img
-                    src="images/doosi-sns-banner.jpg"
-                    alt="우정사랑 SNS 배너"
-                    style="
-                      width: 100%;
-                      height: 100%;
-                      object-fit: cover;
-                      object-position: top;
-                    "
-                  />
+                <div class="work-tags">
+                  <span class="wtag">1:1</span><span class="wtag">SNS</span
+                  ><span class="wtag">이벤트</span>
                 </div>
               </div>
             </div>
@@ -933,50 +962,31 @@
               Delma Studios
             </div>
             <div class="bh-title">의류 쇼핑몰 — 상세페이지 & 팝업</div>
-            <div class="bh-sub">2020 – 2021</div>
+            <div class="bh-sub">2015 – 2021</div>
           </div>
           <div class="delma-grid">
             <div class="delma-left">
-              <!-- 상세페이지 스크롤 -->
-              <div class="detail-scroll-card au d1">
-                <div style="padding: 12px 16px 0">
-                  <div class="work-cat">상세페이지 — 스크롤하여 확인</div>
+              <!-- 상세페이지 썸네일 -->
+              <div
+                class="work-card au d1 clickable"
+                data-modal-img="images/delma-detailpage.jpg"
+              >
+                <div class="work-img tall">
+                  <img src="images/delmaproductp4.jpg" alt="델마 상세페이지" />
                 </div>
-                <div class="detail-scroll-imgs">
-                  <img src="images/delmaproductp2.jpg" alt="델마 상세1" />
-                  <img src="images/delmaproductp3.jpg" alt="델마 상세2" />
-                  <img src="images/delmaproductp4.jpg" alt="델마 상세3" />
-                </div>
-                <div style="padding: 10px 16px 14px">
+                <div class="work-info">
+                  <div class="work-cat">상세페이지 — 클릭하여 전체 보기</div>
                   <div class="work-name" style="font-size: 13px">
-                    Autumn Breeze · 여름 캐미솔 · Winter Jacket
+                    Autumn Breeze · 여름 캐미솔 · Winter Jacket 등
                   </div>
                   <div class="work-desc">
                     시즌별 의류 단품 상세페이지. 라이프스타일 감성 컷 + 상품
                     디테일 컷 구성.
                   </div>
                   <div class="work-tags">
-                    <span class="wtag">PS</span><span class="wtag">리터칭</span
-                    ><span class="wtag">합성</span
-                    ><span class="wtag">SNS연동</span>
-                  </div>
-                </div>
-              </div>
-              <!-- 메인이미지 -->
-              <div class="work-card au d2" style="overflow: hidden">
-                <div class="work-img tall">
-                  <img src="images/delma-main.jpg" alt="델마 메인 이미지" />
-                </div>
-                <div class="work-info">
-                  <div class="work-cat">메인 이미지</div>
-                  <div class="work-name">Winter Collection</div>
-                  <div class="work-desc">
-                    modern, simple — 겨울 컬렉션 메인 비주얼. 스트릿 감성
-                    레이어드 컷.
-                  </div>
-                  <div class="work-tags">
-                    <span class="wtag">메인배너</span
-                    ><span class="wtag">포토디렉팅</span>
+                    <span class="wtag">Photoshop</span
+                    ><span class="wtag">리터칭</span
+                    ><span class="wtag">합성</span>
                   </div>
                 </div>
               </div>
@@ -992,7 +1002,7 @@
                   />
                 </div>
                 <div class="work-info">
-                  <div class="work-cat">메인 이미지 2nd</div>
+                  <div class="work-cat">메인 이미지</div>
                   <div class="work-name">Natural Studio</div>
                   <div class="work-desc">
                     자연광 스튜디오 무드. 우드·린넨 소품 활용한 감성 비주얼.
@@ -1007,16 +1017,14 @@
                 </div>
                 <div class="popup-grid" style="padding: 0 16px 16px">
                   <div class="popup-item">
-                    <img src="images/팝업5.jpg" alt="팝업5" />
+                    <img src="images/delma-popup1.jpg" alt="팝업5" />
                   </div>
                   <div class="popup-item">
-                    <img src="images/팝업6_gif.jpg" alt="팝업6 gif" />
+                    <img src="images/delma-popup2.jpg" alt="팝업6 gif" />
                   </div>
                 </div>
                 <div style="padding: 0 16px 14px">
-                  <div class="work-desc">
-                    10% OFF 스페셜 위크 팝업 + 설연휴 배송 중단 공지 GIF 팝업.
-                  </div>
+                  <div class="work-desc">SALE 팝업, 연휴 공지 팝업 등.</div>
                   <div class="work-tags">
                     <span class="wtag">팝업</span><span class="wtag">GIF</span
                     ><span class="wtag">공지</span>
@@ -1028,105 +1036,8 @@
         </div>
       </div>
 
-      <!-- P4 캠페인 비교 -->
+      <!-- P4 TOOLS -->
       <div class="page" id="page-3">
-        <div class="compare-page">
-          <div class="brand-header au">
-            <div class="bh-badge" style="background: var(--muted)">캠페인</div>
-            <div class="bh-title">두 브랜드 캠페인 비교</div>
-            <div class="bh-sub">Brand × Campaign Overview</div>
-          </div>
-          <div class="compare-grid">
-            <div class="compare-col au d1">
-              <div class="col-header">
-                <div class="col-brand">두시</div>
-                <div class="col-sub">Floral · Lifestyle · 2023–2024</div>
-              </div>
-              <div class="camp-row">
-                <div class="camp-thumb-sm">
-                  <img src="images/doosi-performance.jpg" alt="퍼포먼스" />
-                </div>
-                <div class="camp-body">
-                  <div class="camp-cat-sm">테마 캠페인</div>
-                  <div class="camp-name-sm">퍼포먼스</div>
-                  <div class="camp-desc-sm">
-                    드가 회화 × 꽃 어레인지. 테마 메인배너 + 상세 + SNS.
-                  </div>
-                </div>
-              </div>
-              <div class="camp-row">
-                <div class="camp-thumb-sm">
-                  <img src="images/우정사랑.jpg" alt="우정사랑" />
-                </div>
-                <div class="camp-body">
-                  <div class="camp-cat-sm">이벤트</div>
-                  <div class="camp-name-sm">우정, 사랑</div>
-                  <div class="camp-desc-sm">
-                    국제 우정의 날 기획. 해바라기 세트 프로모션 SNS 배너.
-                  </div>
-                </div>
-              </div>
-              <div class="camp-row">
-                <div class="camp-thumb-sm">
-                  <img src="images/꽃정기구독.jpg" alt="꽃정기구독" />
-                </div>
-                <div class="camp-body">
-                  <div class="camp-cat-sm">서비스 상세</div>
-                  <div class="camp-name-sm">꽃 정기구독</div>
-                  <div class="camp-desc-sm">
-                    구독 서비스 메인 상세. 배송 캘린더 + 사이즈 인포그래픽.
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="compare-col au d2">
-              <div class="col-header">
-                <div class="col-brand">Delma Studios</div>
-                <div class="col-sub">Fashion · Lifestyle · 2020–2021</div>
-              </div>
-              <div class="camp-row">
-                <div class="camp-thumb-sm">
-                  <img src="images/겨울컬렉션.jpg" alt="겨울컬렉션" />
-                </div>
-                <div class="camp-body">
-                  <div class="camp-cat-sm">시즌 컬렉션</div>
-                  <div class="camp-name-sm">Winter Collection</div>
-                  <div class="camp-desc-sm">
-                    modern, simple 무드. 스트릿 스냅 레이어드 메인 비주얼.
-                  </div>
-                </div>
-              </div>
-              <div class="camp-row">
-                <div class="camp-thumb-sm">
-                  <img src="images/스페셜위크.jpg" alt="스페셜위크" />
-                </div>
-                <div class="camp-body">
-                  <div class="camp-cat-sm">이벤트 팝업</div>
-                  <div class="camp-name-sm">Special Week</div>
-                  <div class="camp-desc-sm">
-                    10% OFF 로그인 이벤트. 팝업 + GIF 공지 제작.
-                  </div>
-                </div>
-              </div>
-              <div class="camp-row">
-                <div class="camp-thumb-sm">
-                  <img src="images/시즌상세.jpg" alt="시즌상세" />
-                </div>
-                <div class="camp-body">
-                  <div class="camp-cat-sm">시즌 상세페이지</div>
-                  <div class="camp-name-sm">Autumn Breeze 외</div>
-                  <div class="camp-desc-sm">
-                    가을·여름·겨울 시즌별 의류 단품 상세페이지 다수 제작.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- P5 TOOLS -->
-      <div class="page" id="page-4">
         <div class="tools-page">
           <div class="tools-hd">
             <div class="brand-header au" style="margin-bottom: 0">
@@ -1167,34 +1078,44 @@
               <div class="tool-pct">68</div>
             </div>
             <div class="tool-row2">
-              <div class="tool-n">After Effects</div>
+              <div class="tool-n">HTML</div>
               <div class="tool-bg">
                 <div
                   class="tool-fg"
-                  style="width: 45%; animation-delay: 0.4s"
+                  style="width: 90%; animation-delay: 0.4s"
                 ></div>
               </div>
-              <div class="tool-pct">45</div>
+              <div class="tool-pct">90</div>
             </div>
             <div class="tool-row2">
-              <div class="tool-n">Premiere</div>
+              <div class="tool-n">CSS</div>
               <div class="tool-bg">
                 <div
                   class="tool-fg"
-                  style="width: 38%; animation-delay: 0.5s"
+                  style="width: 90%; animation-delay: 0.5s"
                 ></div>
               </div>
-              <div class="tool-pct">38</div>
+              <div class="tool-pct">90</div>
+            </div>
+            <div class="tool-row2">
+              <div class="tool-n">JavaScript</div>
+              <div class="tool-bg">
+                <div
+                  class="tool-fg"
+                  style="width: 40%; animation-delay: 0.6s"
+                ></div>
+              </div>
+              <div class="tool-pct">40</div>
             </div>
           </div>
           <div class="au d2">
             <div class="tsec-label">기본 정보</div>
             <div class="prof-row">
-              <span class="prof-k">이름</span><span class="prof-v">홍길동</span>
+              <span class="prof-k">이름</span><span class="prof-v">한유리</span>
             </div>
             <div class="prof-row">
               <span class="prof-k">경력</span
-              ><span class="prof-v">3년 (이커머스 웹디자인)</span>
+              ><span class="prof-v">약 5년 (이커머스 웹디자인)</span>
             </div>
             <div class="prof-row">
               <span class="prof-k">브랜드 경험</span
@@ -1206,11 +1127,7 @@
             </div>
             <div class="prof-row">
               <span class="prof-k">이메일</span
-              ><span class="prof-v">your@email.com</span>
-            </div>
-            <div class="prof-row" style="border: none">
-              <span class="prof-k">연락처</span
-              ><span class="prof-v">010-0000-0000</span>
+              ><span class="prof-v">hurshoby@naver.com</span>
             </div>
           </div>
         </div>
@@ -1268,9 +1185,40 @@
         .forEach((d, i) => d.addEventListener("click", () => goTo(i)));
       document.addEventListener("keydown", (e) => {
         if (e.key === "ArrowRight" || e.key === "ArrowDown")
-          goTo(Math.min(cur + 1, 4));
+          goTo(Math.min(cur + 1, 3));
         if (e.key === "ArrowLeft" || e.key === "ArrowUp")
           goTo(Math.max(cur - 1, 0));
+      });
+    </script>
+
+    <!-- 이미지 모달 -->
+    <div id="img-modal">
+      <span class="modal-close">&times;</span>
+      <img id="modal-img" src="" alt="" />
+    </div>
+    <script>
+      const imgModal = document.getElementById("img-modal");
+      const modalImg = document.getElementById("modal-img");
+
+      document
+        .querySelectorAll(".work-card.clickable[data-modal-img]")
+        .forEach((card) => {
+          card.addEventListener("click", () => {
+            modalImg.src = card.dataset.modalImg;
+            imgModal.classList.add("open");
+          });
+        });
+
+      imgModal.querySelector(".modal-close").addEventListener("click", (e) => {
+        e.stopPropagation();
+        imgModal.classList.remove("open");
+      });
+      imgModal.addEventListener("click", () =>
+        imgModal.classList.remove("open"),
+      );
+      modalImg.addEventListener("click", (e) => e.stopPropagation());
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") imgModal.classList.remove("open");
       });
     </script>
   </body>
