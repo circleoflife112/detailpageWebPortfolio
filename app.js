@@ -106,8 +106,10 @@ const POP = {
     imgs: [
       ["images/doosi-edit/postcard97.jpg", "Editorial1"],
       ["images/doosi-edit/postcard101.jpg", "Editorial2"],
-      ["images/doosi-edit/postcard-back.jpg", "Editorial3"],
-      ["images/doosi-edit/postcard103.jpg", "Editorial4"],
+      ["images/doosi-edit/postcard99.jpg", "Editorial3"],
+      ["images/doosi-edit/postcard-back.jpg", "Editorial4"],
+      ["images/doosi-edit/postcard103.jpg", "Editorial5"],
+      ["images/doosi-edit/postCardBack2.jpg", "Editorial6"],
     ],
   },
 };
