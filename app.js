@@ -88,9 +88,14 @@ const POP = {
       ["형식", "팝업 · GIF"],
       ["작업", "디자인 · 제작"],
     ],
+    layout: "grid",
     imgs: [
-      ["images/delma-popup1.jpg", "팝업 1"],
-      ["images/delma-popup2.jpg", "팝업 2"],
+      ["images/popup/delma-popup1.jpg", "팝업 1"],
+      ["images/popup/delma-popup2.jpg", "팝업 2"],
+      ["images/popup/delma-popup3.jpg", "팝업 3"],
+      ["images/popup/doosi-popup1.jpg", "팝업 4"],
+      ["images/popup/doosi-popup2.jpg", "팝업 5"],
+      ["images/popup/doosi-popup3.jpg", "팝업 6"],
     ],
   },
   "doosi-edit": {
