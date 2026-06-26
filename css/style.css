@@ -130,7 +130,6 @@ nav {
   justify-content: flex-end;
   padding: 60px;
   position: relative;
-  background: url("../images/bgimg1.JPG") left/30% auto no-repeat;
 }
 
 /* .hero::before {
@@ -174,14 +173,12 @@ nav {
 }
 .hero-intro {
   position: absolute;
-  bottom: 60px;
+  bottom: 20%;
   left: 60px;
   max-width: 360px;
 }
 .hero-intro-label {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: var(--label-font-size);
   color: var(--lime-text);
   margin-bottom: 12px;
   display: flex;
