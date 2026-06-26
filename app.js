@@ -8,7 +8,6 @@ const POP = {
       ["역할", "상세페이지 · 배너 · SNS"],
       ["툴", "Photoshop · Illustrator"],
     ],
-    imgs: [["images/doosi-main.jpg", "두시 메인"]],
   },
   delma: {
     cat: "델마스튜디오 — Fashion Brand 2015–2021",
@@ -18,10 +17,6 @@ const POP = {
       ["기간", "2015 – 2021"],
       ["역할", "상세페이지 · 메인비주얼 · 팝업"],
       ["툴", "Photoshop · Illustrator"],
-    ],
-    imgs: [
-      ["images/delma-main.JPG", "델마 메인"],
-      ["images/delma-main2.jpg", "Natural Studio"],
     ],
   },
   "doosi-detail": {
@@ -156,7 +151,9 @@ function openPop(id) {
     .join("");
   const pImgs = document.getElementById("pImgs");
   pImgs.className = "pop-imgs" + (d.layout === "grid" ? " grid" : "");
-  pImgs.innerHTML = "";
+  pImgs.innerHTML = d.imgs
+    ? d.imgs.map(([src, alt]) => `<img src="${src}" alt="${alt}">`).join("")
+    : "";
   document.getElementById("popOv").classList.add("open");
   document.body.style.overflow = "hidden";
 }
