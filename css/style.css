@@ -293,20 +293,16 @@ section {
   margin-top: 20px;
 }
 .tag {
-  font-size: 10px;
+  background: var(--lime);
+  font-size: 1rem;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 5px 12px;
   border: 1px solid var(--border);
-  color: var(--fg2);
-  border-radius: 100px;
-  background: transparent;
-}
-.tag.lime {
-  background: var(--lime);
   color: var(--fg);
+  border-radius: 100px;
   border-color: var(--lime);
-  font-weight: 700;
 }
 
 /* ── WORKS ── */

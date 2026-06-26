@@ -156,12 +156,7 @@ function openPop(id) {
     .join("");
   const pImgs = document.getElementById("pImgs");
   pImgs.className = "pop-imgs" + (d.layout === "grid" ? " grid" : "");
-  pImgs.innerHTML = d.imgs
-    .map(
-      ([s, a]) =>
-        `<img src="${s}" alt="${a}" onerror="this.style.display='none'">`,
-    )
-    .join("");
+  pImgs.innerHTML = "";
   document.getElementById("popOv").classList.add("open");
   document.body.style.overflow = "hidden";
 }
